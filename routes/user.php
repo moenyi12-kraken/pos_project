@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
-    Route::get('home', [UserController::class, 'home'])->name('userHome');
+    Route::get('home', [UserController::class, 'home'])->middleware(['auth'])->name('userHome');
     Route::get('product/detail/{id}', [UserController::class, 'productDetail'])->name('user#ProductDetail');
     Route::post('comment', [UserController::class, 'comment'])->name('user#Comment');
     Route::get('comment/delete/{id}', [UserController::class, 'delete'])->name('user#DeleteComment');

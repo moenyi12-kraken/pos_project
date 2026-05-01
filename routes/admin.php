@@ -6,9 +6,10 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuperAdminController;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('home', [AdminController::class, 'home'])->name('adminHome');
+    Route::get('home', [AdminController::class, 'home'])->middleware(['auth'])->name('adminHome');
 
     Route::group(['prefix' => 'category'], function () {
         Route::get('list', [CategoryController::class, 'list'])->name('admin#Category');
