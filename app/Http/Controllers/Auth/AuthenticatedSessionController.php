@@ -29,17 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (! $user) {
-            return redirect('/');
-        }
+        // if (! $user) {
+        //     return redirect('/');
+        // }
 
-        if ($user->role === 'superadmin' || $user->role === 'admin') {
-            return to_route('adminHome');
-        }
+        // if ($user->role === 'superadmin' || $user->role === 'admin') {
+        //     return redirect()->route('adminHome');
+        //     return to_route('adminHome');
+        // }
 
-        return to_route('userHome');
+        // return redirect()->route('userHome');
+        // return to_route('userHome');
 
-        // return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**
