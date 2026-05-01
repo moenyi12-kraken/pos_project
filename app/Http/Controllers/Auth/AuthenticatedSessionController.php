@@ -34,7 +34,8 @@ class AuthenticatedSessionController extends Controller
         }
 
         if ($user->role === 'superadmin' || $user->role === 'admin') {
-            return to_route('adminHome');
+            // return to_route('adminHome');
+            dd($user->toArray());
         }
 
         return to_route('userHome');
