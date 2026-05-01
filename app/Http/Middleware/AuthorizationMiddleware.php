@@ -19,11 +19,7 @@ class AuthorizationMiddleware
 
         if ($user) {
 
-            if ($user->role === 'admin' || $user->role === 'superadmin') {
-                return to_route('adminHome');
-            }
-
-            return to_route('userHome');
+            return back();
         }
 
         return $next($request);
