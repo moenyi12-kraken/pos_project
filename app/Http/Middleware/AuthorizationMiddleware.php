@@ -15,15 +15,18 @@ class AuthorizationMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()) {
-            if (Auth::user()->role != 'user') {
+        $user = Auth::user();
+
+        if ($user) {
+
+            if ($user->role === 'admin' || $user->role === 'superadmin') {
                 return to_route('adminHome');
-            } else {
-                return to_route('userHome');
             }
-        } else {
-            return $next($request);
+
+            return to_route('userHome');
         }
+
+        return $next($request);
 
     }
 }
