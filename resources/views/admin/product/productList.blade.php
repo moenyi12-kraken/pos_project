@@ -111,7 +111,7 @@
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
-                    location.href = '/admin/product/delete/' + $id
+                    location.href = '/product/delete/' + $id
                 }
             });
         }

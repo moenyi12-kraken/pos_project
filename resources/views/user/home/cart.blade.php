@@ -139,7 +139,7 @@
 
                 $.ajax({
                     type: 'get',
-                    url: '/user/cartDelete',
+                    url: '/cartDelete',
                     data: $deleteData,
                     dataType: 'json',
 
@@ -171,12 +171,12 @@
 
                 $.ajax({
                     type: 'get',
-                    url: '/user/tempStorage',
+                    url: '/tempStorage',
                     data: Object.assign({}, orderList),
                     dataType: 'json',
                     success: function(res) {
                         res.status == 'success' ? location.href =
-                            '/user/paymentPage' : location.reload();
+                            '/paymentPage' : location.reload();
                     }
                 })
             })

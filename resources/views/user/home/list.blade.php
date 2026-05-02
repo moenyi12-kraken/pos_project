@@ -21,7 +21,7 @@
                             @foreach ($categories as $item)
                                 <li class="nav-item">
                                     <a class="d-flex m-2 py-2 {{ request('categoryId') == $item->id ? 'bg-secondary' : 'bg-light' }} rounded-pill"
-                                        href="{{ url('user/home?categoryId=' . $item->id) }}">
+                                        href="{{ url('userHome?categoryId=' . $item->id) }}">
                                         <span class="text-dark" style="width: 130px;">{{ $item->name }}</span>
                                     </a>
                                 </li>

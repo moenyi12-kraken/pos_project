@@ -152,11 +152,11 @@
 
                 $.ajax({
                     type: 'get',
-                    url: '/admin/order/access',
+                    url: '/order/access',
                     data: Object.assign({}, orderList),
                     dataType: 'json',
                     success: function(res) {
-                        res.status == 'success' ? location.href = '/admin/order/orderBoard' : ''
+                        res.status == 'success' ? location.href = '/order/orderBoard' : ''
                     }
                 })
 
@@ -167,13 +167,13 @@
 
                 $.ajax({
                     type: 'get',
-                    url: '/admin/order/reject',
+                    url: '/order/reject',
                     data: {
                         'orderCode': orderCode
                     },
                     dataType: 'json',
                     success: function(res) {
-                        res.status == 'success' ? location.href = '/admin/order/orderBoard' :
+                        res.status == 'success' ? location.href = '/order/orderBoard' :
                             '';
                     }
                 })

@@ -3,13 +3,14 @@
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
-    Route::get('home', [UserController::class, 'home'])->middleware(['auth'])->name('userHome');
+Route::group(['middleware' => 'user'], function () {
+    Route::get('userHome', [UserController::class, 'home'])->name('userHome');
+
     Route::get('product/detail/{id}', [UserController::class, 'productDetail'])->name('user#ProductDetail');
     Route::post('comment', [UserController::class, 'comment'])->name('user#Comment');
     Route::get('comment/delete/{id}', [UserController::class, 'delete'])->name('user#DeleteComment');
-    Route::get('profile/edit', [UserController::class, 'edit'])->name('user#EditProfile');
-    Route::post('profile/update', [UserController::class, 'update'])->name('user#UpdateProfile');
+    Route::get('profileEdit', [UserController::class, 'edit'])->name('user#EditProfile');
+    Route::post('profileEdit', [UserController::class, 'update'])->name('user#UpdateProfile');
     Route::get('password/change', [UserController::class, 'changePassword'])->name('user#ChangePassword');
     Route::post('password/change', [UserController::class, 'changeProcess'])->name('user#ChangeProcess');
     Route::post('rating', [UserController::class, 'rating'])->name('user#Rating');
@@ -22,4 +23,5 @@ Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
     Route::get('paymentPage', [UserController::class, 'paymentPage'])->name('user#paymentPage');
     Route::post('order', [UserController::class, 'order'])->name('user#order');
     Route::get('orderList', [UserController::class, 'orderList'])->name('user#OrderList');
+
 });

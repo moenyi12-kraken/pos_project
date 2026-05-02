@@ -12,6 +12,9 @@
     <a href="{{ route('socialLogin', 'google') }}">Google Login</a>
     <hr>
     <a href="{{ route('socialLogin', 'github') }}">GitHub Login</a>
+    <hr>
+    <a href="{{ route('adminHome') }}">adminHome</a>
+
 </body>
 
 </html>

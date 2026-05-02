@@ -96,7 +96,7 @@
 
                 $.ajax({
                     type: 'get',
-                    url: '/admin/order/statusChange',
+                    url: '/order/statusChange',
                     data: {
                         'status': status,
                         'orderCode': orderCode

@@ -4,15 +4,20 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialLoginController;
 use Illuminate\Support\Facades\Route;
 
-require_once __DIR__ . '/admin.php';
-require_once __DIR__ . '/user.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/user.php';
 
 Route::get('/', function () {
     return to_route('login');
 });
 
+// Route::middleware('admin')->group(function () {
+//     Route::get('home', [AdminController::class, 'home'])->name('adminHome');
+
+// });
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('test');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

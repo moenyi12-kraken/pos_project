@@ -8,8 +8,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('home', [AdminController::class, 'home'])->middleware(['auth'])->name('adminHome');
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('adminHome', [AdminController::class, 'home'])->name('adminHome');
 
     Route::group(['prefix' => 'category'], function () {
         Route::get('list', [CategoryController::class, 'list'])->name('admin#Category');
@@ -26,17 +26,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('delete/{id}', [ProductController::class, 'delete'])->name('product#Delete');
         Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product#Edit');
         Route::post('update', [ProductController::class, 'update'])->name('product#Update');
-        Route::get('detail/{id}', [ProductController::class, 'detail'])->name('product#Detail');
+        Route::get('details/{id}', [ProductController::class, 'detail'])->name('product#Detail');
     });
 
-    Route::group(['prefix' => 'profile'], function () {
-        Route::get('changePasswordPage', [ProfileController::class, 'changePasswordPage'])->name('password#Change');
-        Route::post('changePassword', [ProfileController::class, 'changePassword'])->name('change#Password');
-        Route::get('editProfilePage', [ProfileController::class, 'editProfilePage'])->name('profile#Edit');
-        Route::post('editProfile', [ProfileController::class, 'editProfile'])->name('edit#Profile');
-    });
+    Route::get('changePasswordPage', [ProfileController::class, 'changePasswordPage'])->name('password#Change');
+    Route::post('changePassword', [ProfileController::class, 'changePassword'])->name('change#Password');
+    Route::get('editProfilePage', [ProfileController::class, 'editProfilePage'])->name('profile#Edit');
+    Route::post('editProfile', [ProfileController::class, 'editProfile'])->name('edit#Profile');
 
-    Route::group(['prefix' => 'profile', 'middleware' => 'superadmin'], function () {
+    Route::group(['middleware' => 'superadmin'], function () {
         Route::get('addAdmin', [SuperAdminController::class, 'addAdmin'])->name('admin#Add');
         Route::post('createAdmin', [SuperAdminController::class, 'createAdmin'])->name('admin#Create');
         Route::get('deleteAdmin/{id}', [SuperAdminController::class, 'deleteAdmin'])->name('admin#Delete');
@@ -45,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('payment/{action?}', [SuperAdminController::class, 'payment'])->name('super#Payment');
         Route::post('create', [SuperAdminController::class, 'createpayment'])->name('payment#Create');
         Route::get('edit/{id}', [SuperAdminController::class, 'edit'])->name('payment#Edit');
-        Route::get('delete/{id}', [SuperAdminController::class, 'delete'])->name('payment#Delete');
+        Route::get('paymentDelete/{id}', [SuperAdminController::class, 'delete'])->name('payment#Delete');
         Route::post('update', [SuperAdminController::class, 'update'])->name('payment#Update');
     });
 

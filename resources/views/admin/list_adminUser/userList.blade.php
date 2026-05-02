@@ -102,7 +102,7 @@
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
-                    location.href = '/admin/profile/deleteAdmin/' + $id
+                    location.href = '/profile/deleteAdmin/' + $id
                 }
             });
         }

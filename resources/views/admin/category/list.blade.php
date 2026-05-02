@@ -88,7 +88,7 @@
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
-                    location.href = '/admin/category/delete/' + $id
+                    location.href = '/category/delete/' + $id
                 }
             });
         }

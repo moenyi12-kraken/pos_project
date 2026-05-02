@@ -16,7 +16,7 @@
 # /public/build
 /public/hot
 /public/storage
-/public/admin/vendor/
+# /public/admin/vendor/
 /storage/*.key
 /storage/pail
 /vendor

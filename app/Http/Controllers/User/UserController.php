@@ -115,7 +115,9 @@ class UserController extends Controller
 
         User::where('id', Auth::user()->id)->update($data);
         Alert::success('Success Title', 'Create Successfully');
+
         return back();
+        // return to_route('user#EditProfile');
     }
 
     //Profile Validation

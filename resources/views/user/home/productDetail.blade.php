@@ -275,7 +275,7 @@
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
-                    location.href = '/user/comment/delete/' + $id
+                    location.href = '/comment/delete/' + $id
                 }
             });
         }
