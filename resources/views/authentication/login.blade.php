@@ -17,6 +17,16 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
+
+                                    @session('emailExist')
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            {{ session('emailExist') }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endsession
+
                                     <form class="user" method="POST" action="{{ url('login') }}">
                                         @csrf
                                         <div class="form-group">

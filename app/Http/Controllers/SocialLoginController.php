@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialLoginController extends Controller
@@ -16,6 +17,16 @@ class SocialLoginController extends Controller
     {
         $socialLoginData = Socialite::driver($provider)->user();
         // $user->token
+
+        //Validation for error showing about existing acc and unique email
+        $user = User::where('email', $socialLoginData->email)->first();
+
+        if ($user) {
+            if ($user->provider != $provider) {
+                Session::put('emailExist', 'This email is already taken. You can only use one email per account.');
+                return to_route('login');
+            }
+        }
 
         $socialUser = User::updateOrCreate([
             'provider_id' => $socialLoginData->id,
